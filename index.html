@@ -54,7 +54,7 @@
     animation: slideUpFadeOut 1s forwards;
   }
 
-  /* Preface container hidden by default */
+  /* Preface container */
   #preface-container {
     position: fixed;
     top: 50%; left: 50%;
@@ -62,6 +62,9 @@
     opacity: 0;
     text-align: center;
     max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 1rem;
     transition: opacity 1s ease;
     z-index: 9;
   }
@@ -137,14 +140,14 @@ I Do not know who I am.`
       text: `I Lay In Bed, The Sun a distant memory, I dream; I dream of time. I dream of worlds.
 "I wish to dream of people." I say, I dream of Buildings. I dream of Space. They tell me: "How dare you dream." Tomorrow is another realm.`
     },
-    // Add all other poems here in same structure
+    // Add all your poems here similarly
   ];
 
   const titleContainer = document.getElementById('title-container');
   const prefaceContainer = document.getElementById('preface-container');
   const poemContainer = document.getElementById('poem-container');
 
-  // Render poems
+  // Render poems into poem container
   poems.forEach(p => {
     const div = document.createElement('div');
     div.classList.add('poem');
@@ -152,20 +155,8 @@ I Do not know who I am.`
     poemContainer.appendChild(div);
   });
 
-  let poemIndex = -1; // -1 means preface shown, no poem
-
-  // Step 1: After 2.5s, slide up title and show preface
-  setTimeout(() => {
-    titleContainer.classList.add('hide');
-    setTimeout(() => {
-      titleContainer.style.display = 'none';
-      prefaceContainer.classList.add('visible');
-      poemContainer.style.opacity = '0';
-    }, 1000);
-  }, 2500);
-
-  const poemsDivs = poemContainer.querySelectorAll('.poem');
-
+  let poemIndex = -1; // -1 = preface, 0+ = poem index
+  let titleHidden = false;
   let scrollTimeout = null;
   let lastDeltaY = 0;
 
@@ -191,7 +182,7 @@ I Do not know who I am.`
         prefaceContainer.classList.add('visible');
         poemContainer.scrollTop = 0;
       }
-    }, 2000); // 2 seconds
+    }, 2000);
   }
 
   function nextPoem() {
@@ -212,7 +203,6 @@ I Do not know who I am.`
     poemsDivs.forEach((div,i) => {
       if(i === index) {
         div.classList.add('visible');
-        // Scroll poem into view inside container
         div.scrollIntoView({behavior:'smooth', block:'start'});
       } else {
         div.classList.remove('visible');
@@ -226,6 +216,24 @@ I Do not know who I am.`
     }
   }
 
+  // Wait for DOM to be ready before getting poems divs
+  const poemsDivs = poemContainer.querySelectorAll('.poem');
+
+  // Listen for first scroll to hide title and show preface
+  window.addEventListener('wheel', function onFirstScroll(e) {
+    if (!titleHidden && e.deltaY > 0) {
+      titleHidden = true;
+      titleContainer.classList.add('hide');
+      setTimeout(() => {
+        titleContainer.style.display = 'none';
+        prefaceContainer.classList.add('visible');
+        poemContainer.style.opacity = '0';
+      }, 1000);
+      window.removeEventListener('wheel', onFirstScroll);
+    }
+  });
+
+  // Handle scroll inside poem container or preface -> poem transitions
   poemContainer.addEventListener('wheel', (e) => {
     if(poemIndex === -1) {
       // From preface to first poem on scroll down
@@ -239,27 +247,24 @@ I Do not know who I am.`
       return;
     }
 
-    const atBottom = poemContainer.scrollTop + poemContainer.clientHeight >= poemContainer.scrollHeight - 1; // fudge factor
+    const atBottom = poemContainer.scrollTop + poemContainer.clientHeight >= poemContainer.scrollHeight - 1;
     const atTop = poemContainer.scrollTop <= 0;
 
     if(e.deltaY > 0) { // scroll down
       if(atBottom) {
-        // start 2s timer to move to next poem
-        if(lastDeltaY <= 0) clearScrollTimer(); // reset if direction changed
+        if(lastDeltaY <= 0) clearScrollTimer();
         startScrollTimer('down');
       } else {
         clearScrollTimer();
       }
     } else { // scroll up
       if(atTop) {
-        // start 2s timer to move to prev poem or preface
-        if(lastDeltaY >= 0) clearScrollTimer(); // reset if direction changed
+        if(lastDeltaY >= 0) clearScrollTimer();
         startScrollTimer('up');
       } else {
         clearScrollTimer();
       }
     }
-
     lastDeltaY = e.deltaY;
   });
 </script>
