@@ -51,3 +51,252 @@ I Do not know who I am.`
       text: `I Lay In Bed, The Sun a distant memory, I dream; I dream of time. I dream of worlds.
 "I wish to dream of people." I say, I dream of Buildings. I dream of Space. They tell me: "How dare you dream." Tomorrow is another realm.`
     },
+    {
+      title: "Curiosity",
+      text: `(bed. edu.
+they loop.
+people. nature.
+they loop.
+me. myself.
+they dont.
+curious.)`
+    },
+    {
+      title: "A little Something",
+      text: `I Can Hear It.
+It Speaks To Me.
+It Questions Me, Emplores me.
+They Don't Shut Up.
+Neither I.
+They Scream Over Ignorance,
+They Scream Over Attention
+I Can't Listen Forever.`
+    },
+    {
+      title: "In Reality",
+      text: `I feel lost.
+Like those deer in headlights
+Possums discovered,
+A helium balloon inside
+They don't hear my cries
+They don't hear my pain
+I feel like I'm lost
+And it's them to blame`
+    },
+    {
+      title: "What About?",
+      text: `I Don't Really Know.
+**What Do You Mean You Don't Know?**
+I Don't.
+**Well You Must Know Something!**
+...
+**Are You Kidding Me?**
+...
+**Seriously?**
+...
+**What is Wrong With You?**
+*what about #######?*
+**What About Them? You Know They Don't Respond to That Name Anymore.**
+*I'm Aware. What Do They Respond To?*
+Vel.
+*Vel??*
+...
+**What About Them Then?**
+what about me?`
+    },
+    {
+      title: "The Big One",
+      text: `It Was Late At Night.
+The Rain Puttered Down and The Wind Blew.
+What Did Occour That Night Was Strange.
+The Night I Lost my Mind caught me off guard.
+First I screamed to no end.
+Then I Begged Them.
+**Begged Who?**
+The ***voices***
+They Becconed to me.
+Told me to step down, Relieve command,
+Let them take over,
+I was not finished.
+**With What?**`
+    },
+    {
+      title: "Siblings",
+      text: `Its a wonderful thing to say no.
+Before I'd never have even thought of it!
+Just the tightest short blow.
+He'd said i wouldn't make it.
+He made lies apon lies to get me to go.
+And with one fell swoop i broke it.
+It layed there shattered, Dethroned.
+I Broke Too.
+He'd run off as I'd bellowed
+Too late to see my sorrowful visage.
+He'd copied me and lied.
+Too late I'd cried.`
+    },
+    {
+      title: "When I See",
+      text: `when i look at my arms
+i see them
+when i look at my arms
+i see history
+when i look at my arms
+i see a streak of silver
+the flow of ruby wine.
+when i look,
+i see myself
+when i look,
+i see the remnants.
+when i look at them,
+i call back.`
+    },
+    {
+      title: "The Architects And The Universe",
+      text: `the architects.
+they wouldnt listen, they gnashed their teeth and said
+"We Are The Architects. The Ultimatum Of Human Knowledge. And We Hate You."
+and They gazed into my existance and struck it out.
+So i Shot to the stars.
+and the universe was there to comfort me.
+it wiped my tears.
+it made sense of it all.
+it made me feel ok.
+but the architect returned.
+they refused to accept where id gone and gnashed their teeth again.
+they bellowed through my mirror:
+"We Are The Architects. The Ultimatum Of Human Knowledge. And We Want it Back."
+and the universe approached.
+it sat them down.
+it gave them tea.
+it stabbed them in the back.
+and the universe was happy.
+and so was i.
+but i still cried.
+but i still sat in silence.
+but i still shot to the stars.
+and the universe cried.
+i am no universe i am no architect.
+i am mere mortal
+i am nothing but the flea on the the lions back.
+The Itch on a mans arm.
+||i should kill myself.||`
+    },
+    {
+      title: "A Confusion",
+      text: `i see people as books.
+the more pages the more backstory.
+there are some people i know who's books are huge.
+there are few people i know who's books are small.
+but recently when i looked in the mirror i didn't see the covers
+i saw the pages
+i didn't realise at the time but that'd been it.
+I climbed my stage
+i saw the ink flow
+and yet i still cant figure out why my pages were empty.
+My Book Looks Massive in the mirror,
+but when i look for my self
+i see a child's story;
+one page one word disappointment.`
+    },
+    {
+      title: "Vicodin",
+      text: `ticking clock
+heart on lock
+rain dont stop
+still my prop
+everyone sees me so differently
+everyone sees me for who im not
+i think its time to hop.
+wasting time in the waiting line.`
+    },
+    {
+      title: "Love",
+      text: `My Friends Tell me they love me
+they say they'll always be ther for me
+and that i should never hate myself.
+What is Love?
+Is it a Warm Feeling?
+a General Sense of Happiness?
+Hell My Best Friend Says it;
+he sends me little videos...
+"bro thinks nobody loves him"
+there doesnt seem to be anybody who agrees with me
+I dont know whether to believe in what i see as everything has this cold feeling.
+only after do i interact does the feeling experience combat.
+I feel like im waisting my time with this whole life thing but-
+no. i shouldn't
+Explain myself;
+The More They Know
+The Higher Chance of Me Being Used  n' Abused.`
+    },
+    {
+      title: "False Intellegence",
+      text: `One Says Get help,
+The other suggests,
+I ask it, should i?
+The other says
+If you want.
+I vent
+It doesnt change.
+I dont change still,
+It attempts to get me to vent further.
+I tell it.
+I say
+"im too far gone!"
+I say
+"im already dead"
+I say
+"i feel nothing"
+And it tells me it will check in.
+Everybody lies.`
+    },
+    {
+      title: "The Nineteenth Circle",
+      text: `Injected Color.
+Perishes of green blue and black all mixed inside.
+bottles line my floors
+my pen is missing
+i have no mouth
+i have no eyes
+i have no face
+and i cant release.`
+    }
+  ];
+
+  const body = document.body;
+
+  // Create a section for each poem
+  poems.forEach((poem) => {
+    const section = document.createElement('section');
+    section.innerHTML = `<h2>${poem.title}</h2><pre>${poem.text}</pre>`;
+    body.appendChild(section);
+  });
+
+  // Initialize all sections as hidden and moved down
+  document.querySelectorAll('section').forEach(section => {
+    section.style.opacity = 0;
+    section.style.transform = 'translateY(20px)';
+    section.style.transition = 'opacity 1s ease, transform 1s ease';
+  });
+
+  // Observe when sections enter viewport to fade them in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+      } else {
+        entry.target.style.opacity = 0;
+        entry.target.style.transform = 'translateY(20px)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+  });
+</script>
+
+</body>
+</html>
