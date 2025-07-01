@@ -37,47 +37,17 @@
 <body>
 
 <script>
-  // Your poems array here - replace with actual poems if needed
   const poems = [
-    { title: "Untitled", text: "I lift my covers, the light burns me.\nThe Darkness Too.\nI Approach The Front Gate, Cautious like Prey.\nThey Do Not Know Who I Was.\nI Do not know who I am." },
-    { title: "Reminicience", text: "I Lay In Bed, The Sun a distant memory, I dream; I dream of time. I dream of worlds.\n\"I wish to dream of people.\" I say, I dream of Buildings. I dream of Space. They tell me: \"How dare you dream.\" Tomorrow is another realm." },
-    /* add all your poems here, in order */
-    { title: "Streaks of Silver Traces", text: "— Your final poem or closing text here —" }
-  ];
-
-  const body = document.body;
-
-  // Create a section for each poem
-  poems.forEach((poem) => {
-    const section = document.createElement('section');
-    section.innerHTML = `<h2>${poem.title}</h2><pre>${poem.text}</pre>`;
-    body.appendChild(section);
-  });
-
-  // Initialize all sections as hidden and moved down
-  document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = 0;
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 1s ease, transform 1s ease';
-  });
-
-  // Observe when sections enter viewport to fade them in
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-      } else {
-        entry.target.style.opacity = 0;
-        entry.target.style.transform = 'translateY(20px)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-  });
-</script>
-
-</body>
-</html>
+    {
+      title: "Untitled",
+      text: `I lift my covers, the light burns me.
+The Darkness Too.
+I Approach The Front Gate, Cautious like Prey.
+They Do Not Know Who I Was.
+I Do not know who I am.`
+    },
+    {
+      title: "Reminicience",
+      text: `I Lay In Bed, The Sun a distant memory, I dream; I dream of time. I dream of worlds.
+"I wish to dream of people." I say, I dream of Buildings. I dream of Space. They tell me: "How dare you dream." Tomorrow is another realm.`
+    },
